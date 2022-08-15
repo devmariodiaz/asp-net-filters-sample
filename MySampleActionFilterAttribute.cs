@@ -2,12 +2,13 @@
 
 namespace filters;
 
-public class MySampleActionFilterAttribute : Attribute, IActionFilter
+public class MySampleActionFilterAttribute : Attribute, IActionFilter, IOrderedFilter
 {
     private readonly string _name;
-    public MySampleActionFilterAttribute(string name)
+    public MySampleActionFilterAttribute(string name, int order = 0)
     {
         _name = name;
+        Order = order;
     }
     
     public void OnActionExecuting(ActionExecutingContext context)
@@ -19,4 +20,6 @@ public class MySampleActionFilterAttribute : Attribute, IActionFilter
     {
         Console.WriteLine($"OnActionExecuted - {_name}");
     }
+
+    public int Order { get; set; }
 }
