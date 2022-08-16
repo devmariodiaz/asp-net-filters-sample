@@ -13,12 +13,13 @@ public class MySampleActionFilterAttribute : Attribute, IActionFilter, IOrderedF
     
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        Console.WriteLine($"OnActionExecuting - {_name}");
+        var route = context.RouteData;
+        Console.WriteLine($"Action Filter - Before - {_name} {Order}");
     }
 
     public void OnActionExecuted(ActionExecutedContext context)
     {
-        Console.WriteLine($"OnActionExecuted - {_name}");
+        Console.WriteLine($"Action Filter - After - {_name} {Order}");
     }
 
     public int Order { get; set; }

@@ -11,8 +11,8 @@ public class MySampleAsyncActionFilterAttribute : Attribute, IAsyncActionFilter
     }
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        Console.WriteLine($"Before Async Execution {_name}");
+        Console.WriteLine($"Action Filter - Before Async - {_name}");
         await next();
-        Console.WriteLine($"After Async Execution {_name}");
+        Console.WriteLine($"Action Filter - After Async - {_name}");
     }
 }
